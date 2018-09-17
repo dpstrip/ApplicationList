@@ -1,0 +1,43 @@
+﻿@using ApplicationList.ViewModel
+@model ListOfSecurityView
+@{
+    ViewData["Title"] = "Security";
+}
+
+<h2>Security</h2>
+<h2>SLAs</h2>
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Application</th>
+        <th>Master Data</th>
+        <th>IT Security Approval</th>
+        <th>GDPR Critical</th>
+        <th>EMEAI Go Live Date</th>
+        <th>Data Protectio Questions Priort to Fusion</th>
+        <th>Data Protectio Questions Priort For Fusion</th>
+        <th>Data Privacy Approval</th>
+        <th>Work Council Approval Required</th>
+        <th>W.C. Questionaire Complete</th>
+        <th>W.C. Questionaire Sent</th>
+        <th>W.C. Approved</th>
+    </tr>
+    @foreach (AnSecurityView apv in Model.anSecurityViewList)
+    {
+    <tr>
+        <td>@apv.ID</td>
+        <td>@apv.Applicaiton</td>
+        <td>@apv.MasterDataReq</td>
+        <td>@apv.ITSecurityApproval</td>
+        <td>@apv.GDPR</td>
+        <td>@apv.EMEAIGoLiveDate</td>
+        <td>@apv.DPQCCmpltPrrToFusion</td>
+        <td>@apv.DPQCCmpltPrrForFusion</td>
+        <td>@apv.DtPrvcyAppvl</td>
+        <td>@apv.WCApprovalRequired</td>
+        <td>@apv.WCComplete</td>
+        <td>@apv.WCApprovalSent</td>
+        <td>@apv.WCApproved</td>
+    </tr>
+    }
+</table>

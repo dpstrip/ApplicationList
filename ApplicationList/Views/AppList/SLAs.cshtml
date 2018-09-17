@@ -1,0 +1,37 @@
+﻿@using ApplicationList.ViewModel
+@model ListOfSLAs
+@{
+    ViewData["Title"] = "SLAs";
+}
+
+<h2>SLAs</h2>
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Application</th>
+        <th>Priority Level</th>
+        <th>Avaliablity</th>
+        <th>Monthly down Time</th>
+        <th>OS</th>
+        <th>DB</th>
+        <th>Cloud or On Prem</th>
+        <th>Comments</th>
+    </tr>
+    @foreach (AnSLAView apv in Model.slaListView)
+    {
+        <tr>
+            <td>@apv.ID</td>
+            <td>@apv.Applicaiton</td>
+            <td>@apv.PriorityLevel</td>
+            <td>@apv.Availability</td>
+            <td>@apv.MnthlyDwnTme</td>
+            <td>@apv.OS</td>
+            <td>@apv.DB</td>
+            <td>@apv.CloudOnPrem</td>
+            <td>@apv.InfrComments</td>
+
+        </tr>
+    }
+</table>
+
+

@@ -1,0 +1,32 @@
+﻿@using ApplicationList.ViewModel
+@model ListOfStrategyView
+@{
+    ViewData["Title"] = "Strategy";
+}
+
+<h2>Strategy</h2>
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Application</th>
+        <th>Fusion Strategy</th>
+        <th>Integration</th>
+        <th>SAP</th>
+        <th>SAP Integration</th>
+        <th>SAP Area</th>
+        <th>Legacy Originator</th>
+    </tr>
+    @foreach (AnStrategyView apv in Model.StrategyViewList)
+    {
+        <tr>
+            <td>@apv.ID</td>
+            <td>@apv.Applicaiton</td>
+            <td>@apv.FusionStrategy</td>
+            <td>@apv.Integrated</td>
+            <td>@apv.SAP</td>
+            <td>@apv.SAPIntegration</td>
+            <td>@apv.SAPArea</td>
+            <td>@apv.LegacyOriginator</td>
+        </tr>
+    }
+</table>

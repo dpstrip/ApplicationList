@@ -56,7 +56,7 @@ namespace ApplicationList
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=AppList}/{action=Index}/{id?}");
             });
         }
     }
