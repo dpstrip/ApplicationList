@@ -1,0 +1,45 @@
+﻿@using ApplicationList.ViewModel
+@model ListOfAppsView
+
+@{
+    ViewData["Title"] = "List Of Applications";
+}
+
+<h2>List Of Applications</h2>
+<table >
+    <tr>
+        <th >Id</th>
+        <th>Application</th>
+        <th>Arch Layer</th>
+        <th>Plant or Enterprise</th>
+        <th>Functional Area</th>
+        <th>Location</th>
+        <th>Type of Users</th>
+        <th>Business Owner</th>
+        <th>IT Owner</th>
+        <th>Tech Owner</th>
+        <th>Notes</th>
+        <th>Path</th>
+    </tr>
+    @foreach (AnApplicationView apv in Model.anAppViewList)
+    {
+    <tr>
+        <td>@apv.ID</td>
+        <td>@apv.Application</td>
+        <td>@apv.ArchLayer</td>
+        <td>@apv.EnterprisevsPlantSpecific</td>
+        <td>@apv.FunctionalArea</td>
+        <td>@apv.LocationUsed</td>
+        <td>@apv.TypesOfUser</td>
+        <td>@apv.BusinessOwner</td>
+        <td>@apv.ITOwner</td>
+        <td>@apv.TechOwner</td>
+        <td>@apv.Notes</td>
+        <td>@apv.Path</td>
+    </tr>
+    }
+    </table>
+
+
+
+
