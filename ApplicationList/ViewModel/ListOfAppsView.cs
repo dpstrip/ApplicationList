@@ -8,5 +8,6 @@ namespace ApplicationList.ViewModel
     public class ListOfAppsView
     {
         public List<AnApplicationView> anAppViewList { get; set; }
+
     }
 }
