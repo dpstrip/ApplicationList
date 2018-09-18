@@ -48,5 +48,10 @@ namespace ApplicationList.Controllers
             return View(loa);
         }
 
+        public ActionResult AddNew()
+        {
+            return View("AddNew");
+        }
+
     }
 }
