@@ -53,5 +53,10 @@ namespace ApplicationList.Controllers
             return View("AddNew");
         }
 
+        public ActionResult CreateApp(string BtnSubmit)
+        {
+            return View("AddNew");
+        }
+
     }
 }
