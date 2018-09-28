@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ApplicationList.ViewModel;
 using ApplicationList.Models;
+using AppListDal.Model;
 
 namespace ApplicationList.Controllers
 {
@@ -53,9 +54,15 @@ namespace ApplicationList.Controllers
             return View("AddNew");
         }
 
-        public ActionResult CreateApp(string BtnSubmit)
+        public string CreateApp(NewApp app, string BtnSubmit)
         {
-            return View("AddNew");
+            //AppListDal.Model.ApplicationList appL = app.ConvertToAppList();
+
+            app.ConvertToAppList();
+            app.SaveData();
+            return "Did Somthing";
+
+            //return View("AddNew");
         }
 
     }

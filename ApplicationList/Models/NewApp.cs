@@ -49,10 +49,11 @@ namespace ApplicationList.Models
         public string LegacyOriginator { get; set; }
         public string SAPArea { get; set; }
 
+        private AppListDal.Model.ApplicationList aplist = new AppListDal.Model.ApplicationList();
 
-        public AppListDal.Model.ApplicationList ConvertToAppList()
+        public void ConvertToAppList()
         {
-            AppListDal.Model.ApplicationList aplist = new AppListDal.Model.ApplicationList();
+           // AppListDal.Model.ApplicationList aplist = new AppListDal.Model.ApplicationList();
             //Set applist
 //need id if it is a update
             aplist.Application = this.Application;
@@ -66,6 +67,8 @@ namespace ApplicationList.Models
             aplist.TechOwner = this.TechOwner;
             aplist.Path = this.Path;
             aplist.TypesofUsers = this.TypesofUsers;
+            aplist.LocationUsed = this.LocationUsed;
+            aplist.Notes = this.Notes;
 
             //set Infra
             AppListDal.Model.InfraSlas sla = new InfraSlas();
@@ -84,6 +87,7 @@ namespace ApplicationList.Models
             sc.Gdprcriticality = this.GDPRCriticality;
             sc.EmeaigoLiveDate = this.EMEAIGoLiveDate;
             sc.DpqcmpltePriorForFusionChanages = this.TxtDPQCmpltePriorForFusionChanages;
+            sc.DpqcmpltePriorToFusion = this.TxtDPQCmpltePriorToFusion;
             sc.DataPrivacyApproval = this.DataPrivacyApproval;
             sc.ItSecurityApproval = this.ITSecurityApproval;
             sc.WcapprovalRequired = this.WCApprovalRequired;
@@ -104,8 +108,15 @@ namespace ApplicationList.Models
             aplist.Strategy = st;
             
     
-        return aplist;
+        //return aplist;
 
+        }
+
+        public void SaveData()
+        {
+            AppListDal.Model.AppListContext context = new AppListContext();
+            context.Add<AppListDal.Model.ApplicationList>(aplist);
+            context.SaveChanges();
         }
     }
 }
