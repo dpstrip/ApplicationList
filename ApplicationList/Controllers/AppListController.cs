@@ -57,6 +57,7 @@ namespace ApplicationList.Controllers
         public string CreateApp(NewApp app, string BtnSubmit)
         {
             //AppListDal.Model.ApplicationList appL = app.ConvertToAppList();
+            //Create case statement on name of button
 
             app.ConvertToAppList();
             app.SaveData();
