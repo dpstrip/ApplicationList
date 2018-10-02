@@ -24,7 +24,7 @@
     @foreach (AnApplicationView apv in Model.anAppViewList)
     {
     <tr>
-        <td>@apv.ID</td>
+        <td> <a href="~/AppList/AddNew?ID=@apv.ID ">@apv.ID</a></td>
         <td>@apv.Application</td>
         <td>@apv.ArchLayer</td>
         <td>@apv.EnterprisevsPlantSpecific</td>

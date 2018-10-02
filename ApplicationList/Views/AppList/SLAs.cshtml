@@ -20,7 +20,7 @@
     @foreach (AnSLAView apv in Model.slaListView)
     {
         <tr>
-            <td>@apv.ID</td>
+            <td> <a href="~/AppList/AddNew?ID=@apv.ID ">@apv.ID</a></td>
             <td>@apv.Applicaiton</td>
             <td>@apv.PriorityLevel</td>
             <td>@apv.Availability</td>

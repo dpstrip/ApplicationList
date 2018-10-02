@@ -49,21 +49,42 @@ namespace ApplicationList.Controllers
             return View(loa);
         }
 
-        public ActionResult AddNew()
+        public IActionResult AddNew(string ID)
         {
-            return View("AddNew");
+            NewApp newApp = new NewApp();
+            if (ID != null)
+            {
+                newApp.ID = int.Parse(ID);
+                GetAnApp gaa = new GetAnApp(ID);
+                gaa.FillInNewApp(newApp);
+            }
+            return View("AddNew", newApp);
         }
 
-        public string CreateApp(NewApp app, string BtnSubmit)
+        public IActionResult CreateApp(NewApp app, string BtnSubmit)
         {
             //AppListDal.Model.ApplicationList appL = app.ConvertToAppList();
             //Create case statement on name of button
 
-            app.ConvertToAppList();
-            app.SaveData();
-            return "Did Somthing";
+            switch(BtnSubmit)
+            {
+                case "Add":
+                    app.ConvertToAppList();
+                    app.SaveData();
+                    return RedirectToAction("Index");
+                case "Delete":
+                    app.ConvertToAppList();
+                    app.DeleteData();
+                    return RedirectToAction("Index");
+                case "Update":
+                    app.ConvertToAppList();
+                    app.ChangeData();
+                    return RedirectToAction("Index");
 
-            //return View("AddNew");
+            }
+
+            return RedirectToAction("Index");
+
         }
 
     }

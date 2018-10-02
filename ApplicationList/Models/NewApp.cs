@@ -8,6 +8,7 @@ namespace ApplicationList.Models
 {
     public class NewApp
     {
+        public int ID { get; set; }
         public string Application { get; set; }
         public string FuncationalArea { get; set; }
         public string ApplicationDescription { get; set; }
@@ -33,8 +34,8 @@ namespace ApplicationList.Models
         public string MasterDataReq { get; set; }
         public string GDPRCriticality { get; set; }
         public string EMEAIGoLiveDate { get; set; }
-        public string TxtDPQCmpltePriorToFusion { get; set; }
-        public string TxtDPQCmpltePriorForFusionChanages { get; set; }
+        public string DPQCmpltePriorToFusion { get; set; }
+        public string DPQCmpltePriorForFusionChanages { get; set; }
         public string DataPrivacyApproval { get; set; }
         public string ITSecurityApproval { get; set; }
         public string WCApprovalRequired { get; set; }
@@ -53,9 +54,22 @@ namespace ApplicationList.Models
 
         public void ConvertToAppList()
         {
-           // AppListDal.Model.ApplicationList aplist = new AppListDal.Model.ApplicationList();
-            //Set applist
-//need id if it is a update
+            AppListDal.Model.InfraSlas sla = new InfraSlas();
+            SecurityCompliance sc = new SecurityCompliance();
+            Strategy st = new Strategy();
+            Arch arch = new Arch();
+            arch.Id = this.ID;
+            // AppListDal.Model.ApplicationList aplist = new AppListDal.Model.ApplicationList();
+            if (this.ID != 0)
+            {
+                aplist.Id = this.ID;
+                arch.Id = this.ID;
+                sla.Id = this.ID;
+                sc.Id = this.ID;
+                st.Id = this.ID;
+            }
+
+            
             aplist.Application = this.Application;
             aplist.ApplicationDescription = this.ApplicationDescription;
             aplist.ApplicationType = this.ApplicationType;
@@ -71,7 +85,8 @@ namespace ApplicationList.Models
             aplist.Notes = this.Notes;
 
             //set Infra
-            AppListDal.Model.InfraSlas sla = new InfraSlas();
+            
+            
             sla.Availability = this.Availability;
             sla.MnthlyDwnTmeMax = this.MnthlyDwnTmeMax;
             sla.PriorityLevel = this.PriorityLevel;
@@ -82,12 +97,13 @@ namespace ApplicationList.Models
             aplist.InfraSlas = sla;
 
             //setSecurityCompliance
-            SecurityCompliance sc = new SecurityCompliance();
+            
+            
             sc.MasterDataReq = this.MasterDataReq;
             sc.Gdprcriticality = this.GDPRCriticality;
             sc.EmeaigoLiveDate = this.EMEAIGoLiveDate;
-            sc.DpqcmpltePriorForFusionChanages = this.TxtDPQCmpltePriorForFusionChanages;
-            sc.DpqcmpltePriorToFusion = this.TxtDPQCmpltePriorToFusion;
+            sc.DpqcmpltePriorForFusionChanages = this.DPQCmpltePriorToFusion;
+            sc.DpqcmpltePriorToFusion = this.DPQCmpltePriorForFusionChanages;
             sc.DataPrivacyApproval = this.DataPrivacyApproval;
             sc.ItSecurityApproval = this.ITSecurityApproval;
             sc.WcapprovalRequired = this.WCApprovalRequired;
@@ -97,7 +113,8 @@ namespace ApplicationList.Models
             aplist.SecurityCompliance = sc;
 
             //set Strategy
-            Strategy st = new Strategy();
+            
+            
             st.Sap = this.SAP;
             st.Integrated = this.Integrated;
             st.Sapintegration = this.SAPIntegration;
@@ -106,9 +123,10 @@ namespace ApplicationList.Models
             st.Saparea = this.SAPArea;
 
             aplist.Strategy = st;
-            
+
+            aplist.Arch = arch;
     
-        //return aplist;
+
 
         }
 
@@ -116,6 +134,20 @@ namespace ApplicationList.Models
         {
             AppListDal.Model.AppListContext context = new AppListContext();
             context.Add<AppListDal.Model.ApplicationList>(aplist);
+            context.SaveChanges();
+        }
+
+        public void DeleteData()
+        {
+            AppListDal.Model.AppListContext context = new AppListContext();
+            context.Remove<AppListDal.Model.ApplicationList>(aplist);
+            context.SaveChanges();
+        }
+
+        public void ChangeData()
+        {
+            AppListDal.Model.AppListContext context = new AppListContext();
+            context.Update<AppListDal.Model.ApplicationList>(aplist);
             context.SaveChanges();
         }
     }

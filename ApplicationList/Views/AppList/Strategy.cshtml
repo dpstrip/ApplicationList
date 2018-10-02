@@ -19,7 +19,7 @@
     @foreach (AnStrategyView apv in Model.StrategyViewList)
     {
         <tr>
-            <td>@apv.ID</td>
+            <td> <a href="~/AppList/AddNew?ID=@apv.ID ">@apv.ID</a></td>
             <td>@apv.Applicaiton</td>
             <td>@apv.FusionStrategy</td>
             <td>@apv.Integrated</td>

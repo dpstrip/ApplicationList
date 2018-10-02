@@ -1,55 +1,106 @@
-﻿
+﻿@using ApplicationList.Models
+@model NewApp
+<script>
+    function ResetForm() {
+        document.getElementById('TxtApplicaiton').value = "@Model.Application";
+        document.getElementById('TxtFuncationalArea').value = "@Model.FuncationalArea" ;
+        document.getElementById('TxtApplicationDescription').value = "@Model.ApplicationDescription";
+        document.getElementById('TxtEnterprisevsPlantSpecific').value = "@Model.EnterprisevsPlantSpecific";
+        document.getElementById('TxtArchitectureLayer').value = "@Model.ArchitectureLayer";
+        document.getElementById('TxtNotes').value = "@Model.Notes";
+        document.getElementById('TxtBusienssOwner').value = "@Model.BusienssOwner";
+        document.getElementById('TxtITOwner').value = "@Model.ITOwner";
+        document.getElementById('TxtTechOwner').value = "@Model.TechOwner"
+        document.getElementById('TxtPath').value = "@Model.Path";
+        document.getElementById('TxtLocationUsed').value = "@Model.LocationUsed";
+        document.getElementById('TxtApplicationType').value = "@Model.LocationUsed";
+        document.getElementById('TxtTypesofUsers').value = "@Model.TypesofUsers";
+
+        document.getElementById('TxtAvailability').value = "@Model.Availability";
+        document.getElementById('TxtMnthlyDwnTmeMax').value = "@Model.MnthlyDwnTmeMax";
+        document.getElementById('TxtPriorityLevel').value = "@Model.PriorityLevel";
+        document.getElementById('TxtDB').value = "@Model.DB";
+        document.getElementById('TxtInfraComment').value = "@Model.InfraComment";
+        document.getElementById('TxtCloudOn-PremSAAS').value = "@Model.CloudOnPremSAAS";
+        document.getElementById('TxtOS').value = "@Model.OS";
+
+        document.getElementById('TxtMasterDataReq').value = "@Model.MasterDataReq";
+        document.getElementById('TxtGDPRCriticality').value = "@Model.FuncationalArea";
+        document.getElementById('TxtEMEAIGoLiveDate').value = "@Model.EMEAIGoLiveDate";
+        document.getElementById('TxtDPQCmpltePriorToFusion').value = "@Model.DPQCmpltePriorToFusion";
+        document.getElementById('TxtDPQCmpltePriorForFusionChanages').value = "@Model.DPQCmpltePriorForFusionChanages";
+        document.getElementById('TxtDataPrivacyApproval').value = "@Model.DataPrivacyApproval";
+        document.getElementById('TxtITSecurity').value = "@Model.ITSecurityApproval";
+        document.getElementById('TxtWCApprovalRequired').value = "@Model.WCApprovalRequired";
+        document.getElementById('TxtWCQuestionaireSent').value = "@Model.WCQuestionaireSent";
+        document.getElementById('TxtWCQuestionaireComplete').value = "@Model.WCQuestionaireComplete";
+        document.getElementById('TxtWCApproved').value = "@Model.WCApproved";
+
+        document.getElementById('TxtSAP').value = "@Model.SAP";
+        document.getElementById('TxtIntegrated').value = "@Model.Integrated";
+        document.getElementById('TxtSAPIntegration').value = "@Model.SAPIntegration";
+        document.getElementById('TxtFusionStrategy').value = "@Model.FusionStrategy";
+        document.getElementById('TxtLegacyOriginator').value = "@Model.LegacyOriginator";
+        document.getElementById('TxtSAPArea').value = "@Model.SAPArea";
+    }
+</script>
 @{
     ViewData["Title"] = "Add New";
 }
 
 <h2>Add New Application To List</h2>
 <form action="/AppList/CreateApp" method="post">
-    ID: <br/>
-    Application Name: <input type="text" , id="TxtApplicaiton" , name="Application" /><br />
-    Funcational Area: <input type="text" , id="TxtFuncationalArea" , name="FuncationalArea" /><br />
-    Application Description: <input type="text" , id="TxtApplicationDescription" , name="ApplicationDescription" /><br />
-    Enterprise vs. Plant Specific: <input type="text" , id="TxtEnterprisevsPlantSpecific" , name="EnterprisevsPlantSpecific" /><br />
-    Architecture Layer: <input type="text" , id="TxtArchitectureLayer" , name="ArchitectureLayer" /><br />
-    Notes: <input type="text" , id="TxtNotes" , name="Notes" /><br />
-    Busienss Owner: <input type="text" , id="TxtBusienssOwner" , name="BusienssOwner" /><br />
-    IT Owner: <input type="text" , id="TxtITOwner" , name="ITOwner" /><br />
-    Tech Owner: <input type="text" , id="TxtTechOwner" , name="TechOwner" /><br />
-    Path: <input type="text" , id="TxtPath" , name="Path" /><br />
-    Location Used: <input type="text" , id="TxtLocationUsed" , name="LocationUsed" /><br />
-    Application Type: <input type="text" , id="TxtApplicationType" , name="ApplicationType" /><br />
-    Types of Users: <input type="text" , id="TxtTypesofUsers" , name="TypesofUsers" /><br />
+    ID: @Model.ID<br />
+    Application Name: <input type="text" , id="TxtApplicaiton" , name="Application" , value="@Model.Application" /><br />
+    Funcational Area: <input type="text" , id="TxtFuncationalArea" , name="FuncationalArea" , value="@Model.FuncationalArea" /><br />
+    Application Description: <input type="text" , id="TxtApplicationDescription" , name="ApplicationDescription" , value="@Model.ApplicationDescription" /><br />
+    Enterprise vs. Plant Specific: <input type="text" , id="TxtEnterprisevsPlantSpecific" , name="EnterprisevsPlantSpecific" , value="@Model.EnterprisevsPlantSpecific" /><br />
+    Architecture Layer: <input type="text" , id="TxtArchitectureLayer" , name="ArchitectureLayer" , value="@Model.ArchitectureLayer" /><br />
+    Notes: <input type="text" , id="TxtNotes" , name="Notes" , value="@Model.Notes" /><br />
+    Busienss Owner: <input type="text" , id="TxtBusienssOwner" , name="BusienssOwner" , value="@Model.BusienssOwner" /><br />
+    IT Owner: <input type="text" , id="TxtITOwner" , name="ITOwner" , value="@Model.ITOwner" /><br />
+    Tech Owner: <input type="text" , id="TxtTechOwner" , name="TechOwner" , value="@Model.TechOwner" /><br />
+    Path: <input type="text" , id="TxtPath" , name="Path" , value="@Model.Path" /><br />
+    Location Used: <input type="text" , id="TxtLocationUsed" , name="LocationUsed" , value=" @Model.LocationUsed" /><br />
+    Application Type: <input type="text" , id="TxtApplicationType" , name="ApplicationType" , value="@Model.ApplicationType" /><br />
+    Types of Users: <input type="text" , id="TxtTypesofUsers" , name="TypesofUsers" , value="@Model.TypesofUsers" /><br />
     <hr /><br />
-    Availability: <input type="text" , id="TxtAvailability" , name="Availability" /><br />
-    Montlhy Down Time Allowed: <input type="text" , id="TxtMnthlyDwnTmeMax" , name="MnthlyDwnTmeMax" /><br />
-    Priority Level: <input type="text" , id="TxtPriorityLevel" , name="PriorityLevel" /><br />
-    Database: <input type="text" , id="TxtDB" , name="DB" /><br />
-    Commments: <input type="text" , id="TxtInfraComment" , name="InfraComment" /><br />
-    Cloud, on Premises SaaS: <input type="text" , id="TxtCloudOn-PremSAAS" , name="CloudOnPremSAAS" /><br />
-    Operating System: <input type="text" , id="TxtOS" , name="OS" /><br />
+    <h2>Infrastructure</h2><br />
+    Availability: <input type="text" , id="TxtAvailability" , name="Availability" , value="@Model.Availability" /><br />
+    Montlhy Down Time Allowed: <input type="text" , id="TxtMnthlyDwnTmeMax" , name="MnthlyDwnTmeMax" , value="@Model.MnthlyDwnTmeMax" /><br />
+    Priority Level: <input type="text" , id="TxtPriorityLevel" , name="PriorityLevel" , value="@Model.PriorityLevel" /><br />
+    Database: <input type="text" , id="TxtDB" , name="DB" , value="@Model.DB" /><br />
+    Commments: <input type="text" , id="TxtInfraComment" , name="InfraComment" , value="@Model.InfraComment" /><br />
+    Cloud, on Premises SaaS: <input type="text" , id="TxtCloudOn-PremSAAS" , name="CloudOnPremSAAS" , value="@Model.CloudOnPremSAAS" /><br />
+    Operating System: <input type="text" , id="TxtOS" , name="OS" , value="@Model.OS" /><br />
     <hr /><br />
-    Master Data Requirement: <input type="text" , id="TxtMasterDataReq" , name="MasterDataReq" /><br />
-    GDPR Criticaity: <input type="text" , id="TxtGDPRCriticality" , name="GDPRCriticality" /><br />
-    EMEAI Go Live Date: <input type="text" , id="TxtEMEAIGoLiveDate" , name="EMEAIGoLiveDate" /><br />
-    Data Protetion Questionaire Complete Prior to Fusion: <input type="text" , id="TxtDPQCmpltePriorToFusion" , name="DPQCmpltePriorToFusion" /><br />
-    Data Protetion Questionaire Complete Prior for Fusion: <input type="text" , id="TxtDPQCmpltePriorForFusionChanages" , name="DPQCmpltePriorForFusionChanages" /><br />
-    Data Privacy Approval: <input type="text" , id="TxtDataPrivacyApproval" , name="DataPrivacyApproval" /><br />
-    IT Security Approval: <input type="text" , id="TxtITSecurity" , name="ITSecurityApproval" /><br />
-    Work Council Approval Required: <input type="text" , id="TxtWCApprovalRequired" , name="WCApprovalRequired" /><br />
-    Work Council Questionaire Sent: <input type="text" , id="TxtWCQuestionaireSent" , name="WCQuestionaireSent" /><br />
-    Work Council Questionaire Complete: <input type="text" , id="TxtWCQuestionaireComplete" , name="WCQuestionaireComplete" /><br />
-    Work Council Aproved: <input type="text" , id="TxtWCApproved" , name="WCApproved" /><br />
+
+    <h2>Security and Compliance</h2><br />
+    Master Data Requirement: <input type="text" , id="TxtMasterDataReq" , name="MasterDataReq" value="@Model.MasterDataReq" /><br />
+    GDPR Criticaity: <input type="text" , id="TxtGDPRCriticality" , name="GDPRCriticality" value="@Model.GDPRCriticality" /><br />
+    EMEAI Go Live Date: <input type="text" , id="TxtEMEAIGoLiveDate" , name="EMEAIGoLiveDate" value="@Model.EMEAIGoLiveDate" /><br />
+    Data Protetion Questionaire Complete Prior to Fusion: <input type="text" , id="TxtDPQCmpltePriorToFusion" name="DPQCmpltePriorToFusion" value="@Model.DPQCmpltePriorToFusion" /><br />
+    Data Protetion Questionaire Complete Prior for Fusion: <input type="text" , id="TxtDPQCmpltePriorForFusionChanages" name="DPQCmpltePriorForFusionChanages" value="@Model.DPQCmpltePriorForFusionChanages" /><br />
+    Data Privacy Approval: <input type="text" , id="TxtDataPrivacyApproval" , name="DataPrivacyApproval" value="@Model.DataPrivacyApproval" /><br />
+    IT Security Approval: <input type="text" , id="TxtITSecurity" , name="ITSecurityApproval" ,value="@Model.ITSecurityApproval" /><br />
+    Work Council Approval Required: <input type="text" , id="TxtWCApprovalRequired" , name="WCApprovalRequired" value="@Model.WCApprovalRequired" /><br />
+    Work Council Questionaire Sent: <input type="text" , id="TxtWCQuestionaireSent" , name="WCQuestionaireSent" value="@Model.WCQuestionaireSent" /><br />
+    Work Council Questionaire Complete: <input type="text" , id="TxtWCQuestionaireComplete" name="WCQuestionaireComplete" value="@Model.WCQuestionaireComplete" /><br />
+    Work Council Aproved: <input type="text" , id="TxtWCApproved" , name="WCApproved" value="@Model.WCApproved" /><br />
+
     <hr /><br />
-    SAP: <input type="text" , id="TxtSAP" , name="SAP" /><br />
-    Integrated: <input type="text" , id="TxtIntegrated" , name="Integrated" /><br />
-    Integrated with SAP: <input type="text" , id="TxtSAPIntegration" , name="SAPIntegration" /><br />
-    Fusion Strategy: <input type="text" , id="TxtFusionStrategy" , name="FusionStrategy" /><br />
-    Legacy Company Originator: <input type="text" , id="TxtLegacyOriginator" , name="LegacyOriginator" /><br />
-    SAP Area: <input type="text" , id="TxtSAPArea" , name="SAPArea" /><br />
+    <h2>Strategy</h2><br />
+    SAP: <input type="text" , id="TxtSAP" , name="SAP" , value="@Model.SAP" /><br />
+    Integrated: <input type="text" , id="TxtIntegrated" , name="Integrated" ,value="@Model.Integrated" /><br />
+    Integrated with SAP: <input type="text" , id="TxtSAPIntegration" , name="SAPIntegration" , value="@Model.SAPIntegration" /><br />
+    Fusion Strategy: <input type="text" , id="TxtFusionStrategy" , name="FusionStrategy" , value="@Model.FusionStrategy" /><br />
+    Legacy Company Originator: <input type="text" , id="TxtLegacyOriginator" , name="LegacyOriginator" , value="@Model.LegacyOriginator" /><br />
+    SAP Area: <input type="text" , id="TxtSAPArea" , name="SAPArea" , value="@Model.SAPArea" /><br />
     <hr /><br />
-    <input type="submit" name="BtnSave" value="Save" />
-    <input type="submit" name="BtnDelete" value="Delete" />
-    <input type="button" name="BtnReset" value="Reset" />
+    <input type="submit" name="BtnSubmit" value="Add" />
+    <input type="submit" name="BtnSubmit" value="Update" />
+    <input type="submit" name="BtnSubmit" value="Delete" />
+    <input type="button" name="BtnReset" value="Reset" onclick="ResetForm();" />
 </form>
 
 
