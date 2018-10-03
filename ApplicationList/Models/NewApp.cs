@@ -124,7 +124,7 @@ namespace ApplicationList.Models
 
             aplist.Strategy = st;
 
-            aplist.Arch = arch;
+            //aplist.Arch = arch;
     
 
 
@@ -140,7 +140,11 @@ namespace ApplicationList.Models
         public void DeleteData()
         {
             AppListDal.Model.AppListContext context = new AppListContext();
-            context.Remove<AppListDal.Model.ApplicationList>(aplist);
+            //int id = aplist.Id;
+            //AppListDal.Model.ApplicationList appD = new AppListDal.Model.ApplicationList();
+           // appD.Id = aplist.Id;
+            context.Remove(aplist);
+            //context.Remove<AppListDal.Model.ApplicationList>(aplist);
             context.SaveChanges();
         }
 

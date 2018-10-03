@@ -28,7 +28,8 @@ namespace AppListDal.Model
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                //optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;;Database=AppList;Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer("Server=CLAYDS0992LT\\ADOITCE;Database=AppList;Trusted_Connection=True;");
+               // optionsBuilder.UseSqlServer("Server=CLAYDS0992LT\\ADOITCE;Database=AppList;Trusted_Connection=True;");
+               optionsBuilder.UseSqlServer("Server=CLAYDS0992LT\\ADOITCE;Database=New Database;Trusted_Connection=True;");
             }
         }
 
@@ -42,7 +43,7 @@ namespace AppListDal.Model
                     .WithOne(p => p.Arch)
                     .HasForeignKey<Arch>(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Arch_ToTable");
+                    .HasConstraintName("FK_Arch_ToTable").OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<InfraSlas>(entity =>
@@ -53,7 +54,7 @@ namespace AppListDal.Model
                     .WithOne(p => p.InfraSlas)
                     .HasForeignKey<InfraSlas>(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_InfraSLAs_ToTable");
+                    .HasConstraintName("FK_InfraSLAs_ToTable").OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<SecurityCompliance>(entity =>
@@ -64,7 +65,7 @@ namespace AppListDal.Model
                     .WithOne(p => p.SecurityCompliance)
                     .HasForeignKey<SecurityCompliance>(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_SecurityCompliance_ToTable");
+                    .HasConstraintName("FK_SecurityCompliance_ToTable").OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Strategy>(entity =>
@@ -75,7 +76,7 @@ namespace AppListDal.Model
                     .WithOne(p => p.Strategy)
                     .HasForeignKey<Strategy>(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Strategy_ToTable");
+                    .HasConstraintName("FK_Strategy_ToTable").OnDelete(DeleteBehavior.Cascade);
             });
         }
     }

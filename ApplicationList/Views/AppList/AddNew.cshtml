@@ -51,6 +51,7 @@
 <h2>Add New Application To List</h2>
 <form action="/AppList/CreateApp" method="post">
     ID: @Model.ID<br />
+    <input type="hidden" id="TxtId", name="ID" value="@Model.ID" />
     Application Name: <input type="text" , id="TxtApplicaiton" , name="Application" , value="@Model.Application" /><br />
     Funcational Area: <input type="text" , id="TxtFuncationalArea" , name="FuncationalArea" , value="@Model.FuncationalArea" /><br />
     Application Description: <input type="text" , id="TxtApplicationDescription" , name="ApplicationDescription" , value="@Model.ApplicationDescription" /><br />
