@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
+
 
 namespace AppListDal.Model
 {
@@ -21,15 +24,25 @@ namespace AppListDal.Model
         public virtual DbSet<SecurityCompliance> SecurityCompliance { get; set; }
         public virtual DbSet<Strategy> Strategy { get; set; }
         public virtual DbSet<TbleColumn> TbleColumn { get; set; }
+        private string connection;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-               //optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;;Database=AppList;Trusted_Connection=True;");
-               // optionsBuilder.UseSqlServer("Server=CLAYDS0992LT\\ADOITCE;Database=AppList;Trusted_Connection=True;");
-               optionsBuilder.UseSqlServer("Server=CLAYDS0992LT\\ADOITCE;Database=New Database;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;;Database=AppList;Trusted_Connection=True;");
+                 //optionsBuilder.UseSqlServer("Server=CLAYDS0992LT\\ADOITCE;Database=AppList;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=CLAYDS0992LT\\ADOITCE;Database=New Database;Trusted_Connection=True;");
+                var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+                IConfigurationRoot configuration = builder.Build();
+                string con = configuration.GetConnectionString("connection");
+                Console.WriteLine(con);
+
+                optionsBuilder.UseSqlServer(con);
             }
         }
 

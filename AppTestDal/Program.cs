@@ -43,6 +43,7 @@ namespace AppTestDal
             {
                 Console.WriteLine("{0}, {1}, {3}, {2}", tc.Id, tc.ColumnName, tc.Definition, tc.Table);
             }
+            
             Console.ReadKey();
 
         }
